@@ -51,22 +51,22 @@ For backend: Install the necessary Python packages listed in the requirements.tx
 For frontend: Navigate to the frontend directory and install dependencies using npm.
 
 ## Deployment
-Set up AWS S3 bucket:
+### Set up AWS S3 bucket:
 
 Create an S3 bucket on the AWS Management Console.
 
 Update the bucket name in the Lambda function configuration.
 
-Deploy Lambda functions:
+### Deploy Lambda functions:
 
 Use AWS SAM (Serverless Application Model) or the AWS Management Console to deploy the Lambda functions.
 
-## Deploy Frontend:
+### Deploy Frontend:
 
 Build and deploy the frontend application. You can host it on AWS S3, AWS Amplify, or any other hosting service.
 
 ## Usage
-Upload an image:
+### Upload an image:
 
 Use the web interface to upload an image to the S3 bucket.
 
