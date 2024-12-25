@@ -27,6 +27,11 @@ Welcome to the Cloud Image Processor project! This project is designed to provid
 
 - Frontend Framework (e.g., React, Angular, Vue): For building the user interface.
 
+## Architecture
+Below is a diagram illustrating the architecture of the Cloud Image Processor:
+
+![Cloud Artitecture](Front-End/arc.jpg)
+
 ## Getting Started
 ## Prerequisites
 Before you start, make sure you have:
