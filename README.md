@@ -4,11 +4,11 @@
 This project implements a scalable cloud-based image processing pipeline utilizing AWS services. The solution leverages AWS S3 for storage and AWS Lambda for executing image processing tasks in a serverless environment. The goal is to provide an efficient, cost-effective method for processing images on the cloud without the need to manage server infrastructure.
 
 ## Features
-Image Upload and Storage: Securely upload and store images in an AWS S3 bucket.
+- Image Upload and Storage: Securely upload and store images in an AWS S3 bucket.
 
-Serverless Processing: Automatically trigger AWS Lambda functions upon image upload to perform various processing tasks such as resizing, filtering, and format conversion.
+- Serverless Processing: Automatically trigger AWS Lambda functions upon image upload to perform various processing tasks such as resizing, filtering, and format conversion.
 
-Scalability: The serverless architecture ensures automatic scaling to handle varying loads.
+- Scalability: The serverless architecture ensures automatic scaling to handle varying loads.
 
 Cost Efficiency: AWS’s pay-as-you-go pricing model optimizes costs based on actual usage.
 
