@@ -1,7 +1,7 @@
 # Cloud-Image-Processor
 
 ## Project Overview
-This project implements a scalable cloud-based image processing pipeline utilizing AWS services. The solution leverages AWS S3 for storage and AWS Lambda for executing image processing tasks in a serverless environment. The goal is to provide an efficient, cost-effective method for processing images on the cloud without the need to manage server infrastructure.
+Welcome to the Cloud Image Processor project! This project is designed to provide a scalable, efficient, and cost-effective solution for processing images using AWS cloud services. By leveraging AWS S3 and AWS Lambda, we create a serverless architecture that automatically handles image processing tasks without the need for managing any servers
 
 ## Features
 - Image Upload and Storage: Securely upload and store images in an AWS S3 bucket.
