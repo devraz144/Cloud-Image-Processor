@@ -10,34 +10,34 @@ This project implements a scalable cloud-based image processing pipeline utilizi
 
 - Scalability: The serverless architecture ensures automatic scaling to handle varying loads.
 
-Cost Efficiency: AWS’s pay-as-you-go pricing model optimizes costs based on actual usage.
+- Cost Efficiency: AWS’s pay-as-you-go pricing model optimizes costs based on actual usage.
 
-Frontend Integration: Seamlessly integrates with the frontend to allow users to upload images and receive processed images directly through a web interface.
+- Frontend Integration: Seamlessly integrates with the frontend to allow users to upload images and receive processed images directly through a web interface.
 
 ## Technologies Used
-AWS S3: For storing original and processed images.
+- AWS S3: For storing original and processed images.
 
-AWS Lambda: For serverless execution of image processing tasks.
+- AWS Lambda: For serverless execution of image processing tasks.
 
-AWS CloudWatch: For monitoring and logging.
+- AWS CloudWatch: For monitoring and logging.
 
-Python: Primary language for Lambda functions.
+- Python: Primary language for Lambda functions.
 
-Boto3: AWS SDK for Python to interact with AWS services.
+- Boto3: AWS SDK for Python to interact with AWS services.
 
-Frontend Framework (e.g., React, Angular, Vue): For building the user interface.
+- Frontend Framework (e.g., React, Angular, Vue): For building the user interface.
 
 ## Getting Started
 ## Prerequisites
 Before you start, make sure you have:
 
-An AWS account with necessary permissions.
+- An AWS account with necessary permissions.
 
-Python installed on your computer.
+- Python installed on your computer.
 
-AWS CLI (Command Line Interface) configured.
+- AWS CLI (Command Line Interface) configured.
 
-Node.jsand npm installed for frontend development.
+- Node.jsand npm installed for frontend development.
 
 ## Installation
 ### Clone the repository from GitHub:
@@ -46,16 +46,16 @@ Go to the repository on GitHub and click the "Clone or download" button to get t
 
 ### Install required dependencies:
 
-For backend: Install the necessary Python packages listed in the requirements.txt file.
+- For backend: Install the necessary Python packages listed in the requirements.txt file.
 
-For frontend: Navigate to the frontend directory and install dependencies using npm.
+- For frontend: Navigate to the frontend directory and install dependencies using npm.
 
 ## Deployment
 ### Set up AWS S3 bucket:
 
-Create an S3 bucket on the AWS Management Console.
+- Create an S3 bucket on the AWS Management Console.
 
-Update the bucket name in the Lambda function configuration.
+- Update the bucket name in the Lambda function configuration.
 
 ### Deploy Lambda functions:
 
@@ -81,13 +81,14 @@ The processed image is then saved back to the S3 bucket.
 The web interface fetches the processed image from the S3 bucket and displays it to the user.
 
 ## Contributing
+
 We welcome contributions! If you want to contribute:
 
-Fork the repository on GitHub.
+- Fork the repository on GitHub.
 
-Make your changes.
+- Make your changes.
 
-Create a pull request with a description of what you’ve done.
+- Create a pull request with a description of what you’ve done.
 
 ## License
 This project is licensed under the MIT License.
