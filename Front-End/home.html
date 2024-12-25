@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Image Processing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            cursor: auto;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 0.5rem 0.5rem;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+        }
+
+        header .logo {
+            align-items: left;
+            font-weight: bold;
+        }
+
+        header nav {
+            margin-top: 0.5rem;
+            position: fixed;
+            width: 100%;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration:none;
+            margin: 0 1rem;
+            width: 100%;
+            text-shadow: 0 0 100px #eaae71, 0 0 30px #f3e899, 0 0 120px #f1d494, 0 0 200px #f36e4c;
+        }
+
+        .dropbtn {
+            background-color: #ff6600;
+            color: white;
+            padding: 15px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            text-shadow: 0 0 100px #eaae71, 0 0 30px #f3e899, 0 0 120px #f1d494, 0 0 200px #f36e4c;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f6e0c1;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 25px;
+            display: flex;
+        }
+
+        .dropdown-content a:hover {background-color: #ff6600;}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #ff9257;
+        }
+
+        .hero {
+            background: url('your-background-image.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 9rem 1rem;
+            background-image: url('banner.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero .btn {
+            background: #ff6600;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .intro h2 {
+            margin-bottom: 1rem;
+        }
+
+        .intro ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .intro li {
+            margin-bottom: 0.5rem;
+        }
+
+        .intro .btn {
+            background: #ff6600;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: #d8d5d5;
+        }
+
+        .features .feature {
+            flex: 1;
+            max-width: 25%;
+            text-align: center;
+            margin: 5rem;
+        }
+
+        .features .feature img {
+            width: 100%;
+            height: 100%;
+            margin-bottom: 1rem;
+            transition: transform 0.7s ease;
+        }
+
+        .features .feature img:hover {
+            transform: scale(1.15);
+        }
+
+
+        .testimonials {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .testimonials h2 {
+            margin-bottom: 1rem;
+        }
+
+        .testimonials .testimonial {
+            margin: 1rem auto;
+            max-width: 600px;
+        }
+
+        .testimonials .btn {
+            background: #ff6600;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .use-cases {
+            padding: 4rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .use-cases h2 {
+            text-align: center;
+            margin-bottom: 5rem;
+            width: 100%;
+        }
+
+        .use-cases .case {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+        }
+
+        .use-cases .case img {
+            width: 50%;
+            height: auto;
+        }
+
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        footer .social-icons {
+            margin: 1rem 0;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer .newsletter {
+            margin: 1rem 0;
+        }
+
+        footer .newsletter input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        footer .newsletter button {
+            background: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo" class="banner"><img src="LOGO1.png" width="15%" height="18%" align="left" alt="Logo"></div>
+        <nav>
+            <a href="#">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Services</button>
+                <div class="dropdown-content">
+                    <!-- Update these links to point to the correct HTML pages -->
+                    <a href="resize.html">Resize Image</a>
+                    <a href="greyscale.html">Grayscale Image</a>
+                    <a href="crop.html">Image Cropping</a>
+                    <a href="imgtopdf.html">Image to PDF</a>
+                </div>
+            </div>
+            <a href="#features">Features</a>
+            <a href="#"><button class="dropbtn">About Us</button></a>
+            <a href="#Contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Transform Your Images with Cutting-Edge Processing Technology</h1><br>
+        <p>Unlock the full potential of your visuals with our advanced image processing solutions.</p><br>
+        <a href="#features" class="btn">Get Started</a><br><br><br><br><br>
+        <h2>Why Choose Us?</h2>
+        <br><br>
+        <a href="#use-cases" class="btn">Learn More</a>
+    </section>
+
+    <h1 align="center">Features</h1>
+
+    <section id="features" class="features">
+        <div class="feature">
+            <a href="resize.html"><img src="resize_inst.png" alt="Resize image"></a>
+            <h3>Resizing Image</h3>
+            <p>This feature helps in resizing the image in different sizes.</p>
+        </div>
+        <div class="feature">
+            <a href="greyscale.html"><img src="bw.jpg" alt="Grayscale Image"></a>
+            <h3>Grayscale Image</h3>
+            <p>Convert your coloured image to Grayscale.</p>
+        </div>
+    </section>
+    <section class="features">
+        <div class="feature">
+            <a href="crop.html"><img src="crop.jpeg" alt="Image Cropping"></a>
+            <h3>Image Cropping</h3>
+            <p>Crop your image as you need.</p>
+        </div>
+        <div class="feature">
+            <a href="imgtopdf.html"><img src="pdf.png" alt="Image to PDF"></a>
+            <h3>Image to PDF</h3>
+            <p>Convert your image to PDF file.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <br><br>
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <p>"Fantastic and Faster Results!!"</p>
+            <p>- Anonymous</p>
+        </div>
+        <a href="#" class="btn">See More Reviews</a>
+    </section>
+
+    <section id="use-cases" class="use-cases">
+        <h2>How We Can Help You</h2>
+        <div class="case">
+            <img src="free.png" alt="100% Free">
+            <p><b>Free of cost.</b></p>
+        </div>
+        <div class="case">
+            <img src="nosign.jpeg" alt="No Sign Up">
+            <p><b>No Sign up required.</b></p>
+        </div>
+        <div class="case">
+            <img src="Fast.jpeg" alt="Faster">
+            <p><b>Faster and Efficient.</b></p>
+        </div>
+    </section>
+
+    <footer>
+        <div id="Contact" class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+        </div>
+        <div class="newsletter">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button>Subscribe</button>
+        </div>
+        <p>&copy; PDP. All rights reserved.</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
