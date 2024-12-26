@@ -1,0 +1,36 @@
+import AWS from 'aws-sdk';
+import sharp from 'sharp';
+import axios from 'axios';
+
+const s3 = new AWS.S3();
+const bucketName = 'greyscalebucket';
+
+export async function grayscaleImage(imageUrl) {
+  try {
+    // Download the image from S3 (or an external URL)
+    const response = await axios({ url: imageUrl, method: 'GET', responseType: 'arraybuffer' });
+    const originalImageBuffer = Buffer.from(response.data);
+
+    // Convert the image to grayscale using Sharp
+    const grayscaleImageBuffer = await sharp(originalImageBuffer).grayscale().toBuffer();
+
+    // Generate a unique key for the grayscale image
+    const grayscaleImageKey = `grayscale/${Date.now()}-grayscale.jpg`;
+
+    // Upload the grayscale image to S3
+    const uploadParams = {
+      Bucket: bucketName,
+      Key: grayscaleImageKey,
+      Body: grayscaleImageBuffer,
+      ContentType: 'image/jpeg',
+    };
+    await s3.upload(uploadParams).promise();
+
+    // Return the public URL of the grayscale image
+    const grayscaleImageUrl = `https://${bucketName}.s3.amazonaws.com/${grayscaleImageKey}`;
+    return grayscaleImageUrl;
+  } catch (error) {
+    console.error('Error converting image to grayscale:', error);
+    throw new Error('Failed to convert and upload grayscale image');
+  }
+}
