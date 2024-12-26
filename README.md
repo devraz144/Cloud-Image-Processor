@@ -30,7 +30,7 @@ Welcome to the Cloud Image Processor project! This project is designed to provid
 ## Architecture
 Below is a diagram illustrating the architecture of the Cloud Image Processor:
 
-![Cloud Artitecture](Front-End/arc.jpg)
+![Cloud Arctitecture](Front-End/arc.jpg)
 
 ## Getting Started
 ## Prerequisites
