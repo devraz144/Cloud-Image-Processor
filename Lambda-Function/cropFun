@@ -1,0 +1,47 @@
+import AWS from "aws-sdk";
+import sharp from "sharp";
+
+const s3 = new AWS.S3();
+const bucketName = "cropbucket";
+
+export const handler = async (event) => {
+  try {
+    console.log("Event Received:", JSON.stringify(event, null, 2));
+
+    // Get bucket name and object key from the S3 event
+    const record = event.Records[0];
+    const sourceBucket = record.s3.bucket.name;
+    const sourceKey = record.s3.object.key;
+
+    // Download the image from S3
+    const originalImage = await s3
+      .getObject({ Bucket: sourceBucket, Key: sourceKey })
+      .promise();
+    const originalImageBuffer = originalImage.Body;
+
+    // Define crop options (example values - replace with your logic)
+    const cropOptions = { left: 0, top:0, width: 200, height: 200 };
+
+    // Crop the image using Sharp
+    const croppedImageBuffer = await sharp(originalImageBuffer)
+      .extract(cropOptions)
+      .toBuffer();
+
+    // Generate a unique key for the cropped image
+    const croppedImageKey = `cropped/${Date.now()}-cropped.jpg`;
+
+    // Upload the cropped image to S3
+    const uploadParams = {
+      Bucket: bucketName,
+      Key: croppedImageKey,
+      Body: croppedImageBuffer,
+      ContentType: "image/jpeg",
+    };
+    await s3.upload(uploadParams).promise();
+
+    console.log(`Cropped image uploaded to: ${croppedImageKey}`);
+  } catch (error) {
+    console.error("Error processing image:", error);
+    throw new Error("Failed to crop and upload image");
+  }
+};
